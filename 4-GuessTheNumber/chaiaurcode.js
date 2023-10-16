@@ -67,9 +67,28 @@ function displayMessage(message){
 }
 
 function endGame(){
-
+    //copied code for this fn
+    userInput.value = '';
+    userInput.setAttribute('disabled', '');
+    p.classList.add('button');
+    p.innerHTML = `<h2 id="newGame">Start new Game</h2>`;
+    startOver.appendChild(p);
+    playGame = false;
+    newGame();
 }
 
 function newGame(){
-
+    //copied code for this fn
+    const newGameButton = document.querySelector('#newGame');
+    newGameButton.addEventListener('click', function (e) {
+      randomNumber = parseInt(Math.random() * 100 + 1);
+      prevGuess = [];
+      numGuess = 1;
+      guessSlot.innerHTML = '';
+      remaining.innerHTML = `${11 - numGuess} `;
+      userInput.removeAttribute('disabled');
+      startOver.removeChild(p);
+  
+      playGame = true;
+    });
 }
